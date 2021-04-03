@@ -1,56 +1,56 @@
 
+import com.calculadora.implementacion.Calculadora;
 import java.util.Scanner;
 public class Operador { 
     public static void main(String[] args) {
         
-        int numero1;
-        int numero2;
-        int Sumatotal;
-        int resta;
-        int multiplicacion;
-        double division;
-        double raiz;
+        double numero1=0;
+        double numero2=0;
+        String operador="";
+       double resultado=0;
         
         Scanner scanner = new Scanner(System.in);
         
         //Numero 1 que le solicitamos al usuario
         System.out.println("Ingresa un numero: ");
         
-        numero1= scanner.nextInt();
+        numero1= scanner.nextDouble();
         
         //numero 2 que le solicitamos al usuario
         
         System.out.println("Ingresa el segundo numero: ");
-        numero2= scanner.nextInt();
+        numero2= scanner.nextDouble();
         
-        //Los dos numeros que ingres el usuario se sumaran
-        Sumatotal= numero1 + numero2;
+         System.out.println("Ingresa el operador: ");
+        operador= scanner.next();
         
-        System.out.println("La suma total es: "+ Sumatotal);
-        
-         //Los dos numeros que ingres el usuario se restaran
-        resta= numero1 - numero2;
-        
-        System.out.println("La resta total es: "+ resta);
-         //Los dos numeros que ingres el usuario se multiplicaran
-        multiplicacion= numero1 * numero2;
-        
-        System.out.println("El total de la multiplicacion es: "+ multiplicacion);
+       Calculadora calcu= new Calculadora();
+       switch(operador){
+           case "+":
+               resultado= calcu.sumar(numero1, numero2);
+               break;
+               
+           case "-":
+              resultado= calcu.restar(numero1, numero2);
+              break;
+              
+            case "/":
+              resultado= calcu.dividir(numero1, numero2);
+              break; 
+              
+            case "*":
+              resultado= calcu.multiplicar(numero1, numero2);
+              break;  
+              
+           default:
+              System.out.println("El operador no existe!");
+              return ;
+       }
        
-        //Los dos numeros que ingres el usuario se realizara la division
-        division= numero1 / numero2;
+         calcu.sumar(numero1, numero2);
+        System.out.println("El total es: "+ resultado);
         
-        System.out.println("El total de la division es: "+ division);
-        
-        //raiz cuadrada del primer numero
-        raiz = Math.sqrt(numero1);
-        
-        System.out.println("La raiz del primer numero es: "+ raiz);
-        
-        //raiz cuadrada del segundo numero
-        raiz = Math.sqrt(numero2);
-        
-        System.out.println("La raiz del segundo numero es: "+ raiz);
+       
         
     } 
 }
